@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Division Fraud Detection</title>
+    <link rel="stylesheet" href="cellular_styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧫 Cellular Division Fraud Detection</h1>
+            <p class="subtitle">Detecting suspicious money-splitting behavior through mitosis-inspired modeling</p>
+        </header>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <h3>Simulation Controls</h3>
+                <div class="control-buttons">
+                    <button id="startSimulation" class="btn primary">▶️ Start Simulation</button>
+                    <button id="resetSimulation" class="btn secondary">🔄 Reset</button>
+                    <button id="addWallet" class="btn tertiary">➕ Add Wallet</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Detection Parameters</h3>
+                <div class="parameters">
+                    <div class="parameter">
+                        <label for="minRecipients">Min Recipients:</label>
+                        <input type="number" id="minRecipients" value="5" min="2" max="20">
+                    </div>
+                    <div class="parameter">
+                        <label for="timeWindow">Time Window (mins):</label>
+                        <input type="number" id="timeWindow" value="10" min="1" max="60">
+                    </div>
+                    <div class="parameter">
+                        <label for="minAmount">Min Amount ($):</label>
+                        <input type="number" id="minAmount" value="5000" min="1000" max="100000" step="1000">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="visualization-container">
+                <div id="simulationCanvas"></div>
+                <div class="timeline">
+                    <div class="timeline-marker" id="timeMarker"></div>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-row">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Wallets:</span>
+                            <span class="stat-value" id="totalWallets">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Transactions:</span>
+                            <span class="stat-value" id="totalTransactions">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-item">
+                            <span class="stat-label">Division Events:</span>
+                            <span class="stat-value" id="divisionEvents">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Flagged Wallets:</span>
+                            <span class="stat-value" id="flaggedWallets">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-log">
+                    <h3>Division Events Log</h3>
+                    <div id="eventsContainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-panel" id="detailsPanel">
+            <div class="details-header">
+                <h3>Division Event Details</h3>
+                <button class="close-btn" id="closeDetails">×</button>
+            </div>
+            <div class="details-content" id="detailsContent">
+                <!-- Event details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="cellular_simulation.js"></script>
+</body>
+</html>

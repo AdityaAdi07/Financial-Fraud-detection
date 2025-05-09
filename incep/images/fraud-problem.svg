@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .node { fill: #4caf50; }
+    .node.infected { fill: #f44336; }
+    .edge { stroke: #ffffff; stroke-width: 2; }
+    .edge.suspicious { stroke: #f44336; stroke-dasharray: 5,5; }
+    .text { fill: white; font-family: Arial, sans-serif; font-size: 14px; }
+    .title { fill: white; font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; }
+    .subtitle { fill: rgba(255,255,255,0.7); font-family: Arial, sans-serif; font-size: 16px; }
+  </style>
+  
+  <rect width="800" height="400" fill="#1e1e1e" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title" text-anchor="middle">Blockchain Fraud Detection Challenge</text>
+  <text x="400" y="70" class="subtitle" text-anchor="middle">Traditional static systems vs. Bio-inspired adaptive models</text>
+  
+  <!-- Left side: Traditional System -->
+  <g transform="translate(200,200)">
+    <text x="0" y="-100" class="subtitle" text-anchor="middle">Traditional Static System</text>
+    
+    <!-- Nodes -->
+    <circle cx="-80" cy="-40" r="20" class="node" />
+    <circle cx="0" cy="0" r="20" class="node" />
+    <circle cx="80" cy="-40" r="20" class="node" />
+    <circle cx="-40" cy="60" r="20" class="node" />
+    <circle cx="40" cy="60" r="20" class="node infected" />
+    
+    <!-- Edges -->
+    <line x1="-80" y1="-40" x2="0" y2="0" class="edge" />
+    <line x1="0" y1="0" x2="80" y2="-40" class="edge" />
+    <line x1="-80" y1="-40" x2="-40" y2="60" class="edge" />
+    <line x1="-40" y1="60" x2="40" y2="60" class="edge suspicious" />
+    <line x1="0" y1="0" x2="-40" y2="60" class="edge" />
+    <line x1="0" y1="0" x2="40" y2="60" class="edge suspicious" />
+    <line x1="80" y1="-40" x2="40" y2="60" class="edge suspicious" />
+    
+    <!-- Static Rules -->
+    <rect x="-100" y="100" width="200" height="30" rx="5" fill="#333" />
+    <text x="0" y="120" class="text" text-anchor="middle">Static Detection Rules</text>
+  </g>
+  
+  <!-- Right side: Bio-inspired System -->
+  <g transform="translate(600,200)">
+    <text x="0" y="-100" class="subtitle" text-anchor="middle">Bio-inspired Adaptive System</text>
+    
+    <!-- Nodes -->
+    <circle cx="-80" cy="-40" r="20" class="node" />
+    <circle cx="0" cy="0" r="20" class="node" />
+    <circle cx="80" cy="-40" r="20" class="node" />
+    <circle cx="-40" cy="60" r="20" class="node" />
+    <circle cx="40" cy="60" r="20" class="node infected" />
+    
+    <!-- Edges -->
+    <line x1="-80" y1="-40" x2="0" y2="0" class="edge" />
+    <line x1="0" y1="0" x2="80" y2="-40" class="edge" />
+    <line x1="-80" y1="-40" x2="-40" y2="60" class="edge" />
+    <line x1="-40" y1="60" x2="40" y2="60" class="edge suspicious" />
+    <line x1="0" y1="0" x2="-40" y2="60" class="edge" />
+    <line x1="0" y1="0" x2="40" y2="60" class="edge suspicious" />
+    <line x1="80" y1="-40" x2="40" y2="60" class="edge suspicious" />
+    
+    <!-- Adaptive Models -->
+    <rect x="-100" y="100" width="200" height="30" rx="5" fill="#6200ea" />
+    <text x="0" y="120" class="text" text-anchor="middle">Adaptive Bio-inspired Models</text>
+  </g>
+  
+  <!-- Arrows -->
+  <g transform="translate(400,200)">
+    <path d="M-50,0 L50,0" stroke="#ffffff" stroke-width="2" />
+    <path d="M40,-5 L50,0 L40,5" fill="none" stroke="#ffffff" stroke-width="2" />
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(400,330)">
+    <circle cx="-150" cy="0" r="10" class="node" />
+    <text x="-130" y="5" class="text">Healthy Account</text>
+    
+    <circle cx="0" cy="0" r="10" class="node infected" />
+    <text x="20" y="5" class="text">Fraudulent Account</text>
+    
+    <line x1="-150" y1="30" x2="-110" y2="30" class="edge" />
+    <text x="-90" y="35" class="text">Normal Transaction</text>
+    
+    <line x1="0" y1="30" x2="40" y2="30" class="edge suspicious" />
+    <text x="60" y="35" class="text">Suspicious Transaction</text>
+  </g>
+</svg>

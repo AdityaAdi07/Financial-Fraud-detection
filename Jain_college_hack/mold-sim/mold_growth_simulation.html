@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mold Growth Fraud Detection Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mold Growth Fraud Detection Simulation</h1>
+        
+        <div class="controls">
+            <div class="control-buttons">
+                <button id="startSimulation">▶️ Start Simulation</button>
+                <button id="resetSimulation">🔄 Reset</button>
+                <button id="deleteNode">🗑️ Delete Selected Node</button>
+            </div>
+            <div class="status">
+                <p>Current Status: <span id="simulationStatus">Not Running</span></p>
+                <p>Total Nodes: <span id="totalNodes">0</span></p>
+                <p>Clean Nodes: <span id="cleanNodes">0</span></p>
+                <p>Toxic Nodes: <span id="toxicNodes">0</span></p>
+            </div>
+        </div>
+
+        <div class="visualization">
+            <div id="networkGraph"></div>
+        </div>
+
+        <div class="info-panel">
+            <h2>Simulation Details</h2>
+            <div id="simulationDetails"></div>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="simulation.js"></script>
+</body>
+</html>

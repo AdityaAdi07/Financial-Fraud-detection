@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider Silk Trap Fraud Detection</title>
+    <link rel="stylesheet" href="spider_styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🕸️ Spider Silk Trap Fraud Detection</h1>
+            <p class="subtitle">Web-inspired fraud containment system that traps suspicious transaction activity</p>
+        </header>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <h3>Simulation Controls</h3>
+                <div class="control-buttons">
+                    <button id="startSimulation" class="btn primary">▶️ Start Simulation</button>
+                    <button id="resetSimulation" class="btn secondary">🔄 Reset</button>
+                    <button id="triggerFraud" class="btn danger">💥 Trigger Fraud</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Trap Parameters</h3>
+                <div class="parameters">
+                    <div class="parameter">
+                        <label for="webSensitivity">Web Sensitivity:</label>
+                        <input type="range" id="webSensitivity" min="1" max="10" value="5" class="slider">
+                        <span id="sensitivityValue">5</span>
+                    </div>
+                    <div class="parameter">
+                        <label for="trapThreshold">Trap Threshold:</label>
+                        <input type="range" id="trapThreshold" min="100" max="5000" value="1000" step="100" class="slider">
+                        <span id="thresholdValue">1000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="visualization-container">
+                <div id="simulationCanvas"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--normal-color);"></span>
+                        <span class="legend-label">Normal Wallet</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--web-color);"></span>
+                        <span class="legend-label">Web Node</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--fraud-color);"></span>
+                        <span class="legend-label">Fraud Zone</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--suspicious-color);"></span>
+                        <span class="legend-label">Suspicious Wallet</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--trapped-color);"></span>
+                        <span class="legend-label">Trapped Wallet</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-row">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Wallets:</span>
+                            <span class="stat-value" id="totalWallets">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Web Nodes:</span>
+                            <span class="stat-value" id="webNodes">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-item">
+                            <span class="stat-label">Transactions:</span>
+                            <span class="stat-value" id="totalTransactions">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Trapped Wallets:</span>
+                            <span class="stat-value" id="trappedWallets">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-log">
+                    <h3>Trap Events</h3>
+                    <div id="eventsContainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-panel" id="detailsPanel">
+            <div class="details-header">
+                <h3>Web Trap Details</h3>
+                <button class="close-btn" id="closeDetails">×</button>
+            </div>
+            <div class="details-content" id="detailsContent">
+                <!-- Event details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="spider_simulation.js"></script>
+</body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraud Detection Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="fraud-admin-styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body class="dark-theme">
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="bi bi-shield-lock-fill"></i>
+          <h2>Financialogy</h2>
+        </div>
+        <button id="sidebar-toggle" class="sidebar-toggle">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li class="active">
+            <a href="#dashboard">
+              <i class="bi bi-grid-1x2-fill"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#accounts">
+              <i class="bi bi-person-fill"></i>
+              <span>Accounts</span>
+            </a>
+          </li>
+          <li>
+            <a href="#risk-analysis">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              <span>Risk Analysis</span>
+            </a>
+          </li>
+          <li>
+            <a href="#transactions">
+              <i class="bi bi-arrow-left-right"></i>
+              <span>Transactions</span>
+            </a>
+          </li>
+          <li>
+            <a href="#fraud-zones">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Fraud Zones</span>
+            </a>
+          </li>
+          <li>
+            <a href="#mutation-monitor">
+              <i class="bi bi-activity"></i>
+              <span>Mutation Monitor</span>
+            </a>
+          </li>
+          <li>
+            <a href="#settings">
+              <i class="bi bi-gear-fill"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <button id="theme-toggle" class="theme-toggle">
+          <i class="bi bi-moon-fill"></i>
+          <span>Dark Mode</span>
+        </button>
+        
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-search">
+          <i class="bi bi-search"></i>
+          <input type="text" placeholder="Search accounts, transactions...">
+        </div>
+        <div class="header-actions">
+          <button class="notification-btn">
+            <i class="bi bi-bell-fill"></i>
+            <span class="badge">5</span>
+          </button>
+          <button class="refresh-btn">
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+          <div class="date-time">
+            <p id="current-date">May 8, 2025</p>
+            <p id="current-time">10:03 PM</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-content" id="dashboard">
+        <div class="dashboard-header">
+          <h1>Fraud Detection Dashboard</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary">
+              <i class="bi bi-download"></i>
+              Export Report
+            </button>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-filter"></i>
+              Filter Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Overview Cards -->
+        <div class="overview-cards">
+          <div class="card overview-card">
+            <div class="card-icon warning">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+            <div class="card-content">
+              <h3>High Risk Accounts</h3>
+              <h2>24</h2>
+              <p><span class="up">+12%</span> from last week</p>
+            </div>
+          </div>
+          <div class="card overview-card">
+            <div class="card-icon danger">
+              <i class="bi bi-shield-x"></i>
+            </div>
+            <div class="card-content">
+              <h3>Infected Accounts</h3>
+              <h2>8</h2>
+              <p><span class="up">+3%</span> from last week</p>
+            </div>
+          </div>
+          <div class="card overview-card">
+            <div class="card-icon info">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <div class="card-content">
+              <h3>Avg. Risk Score</h3>
+              <h2>6.4</h2>
+              <p><span class="down">-0.2</span> from last week</p>
+            </div>
+          </div>
+          <div class="card overview-card">
+            <div class="card-icon success">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="card-content">
+              <h3>Healthy Accounts</h3>
+              <h2>152</h2>
+              <p><span class="down">-5%</span> from last week</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk Score Distribution -->
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-header">
+                <h3>Risk Score Distribution</h3>
+                <div class="card-actions">
+                  <button class="btn btn-sm btn-outline-secondary">Daily</button>
+                  <button class="btn btn-sm btn-outline-secondary active">Weekly</button>
+                  <button class="btn btn-sm btn-outline-secondary">Monthly</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="risk-score-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h3>Infection States</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="infection-state-chart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Alerts & Top Risk Accounts -->
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Recent Alerts</h3>
+                <button class="btn btn-sm btn-outline-primary">View All</button>
+              </div>
+              <div class="card-body">
+                <div class="alert-list">
+                  <div class="alert-item critical">
+                    <div class="alert-icon">
+                      <i class="bi bi-exclamation-circle-fill"></i>
+                    </div>
+                    <div class="alert-content">
+                      <h4>Critical Mutation Detected</h4>
+                      <p>Account ID: AC-7829 has shown unusual behavior pattern changes</p>
+                      <span class="alert-time">10 minutes ago</span>
+                    </div>
+                    <div class="alert-actions">
+                      <button class="btn btn-sm btn-danger">Investigate</button>
+                    </div>
+                  </div>
+                  <div class="alert-item high">
+                    <div class="alert-icon">
+                      <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+                    <div class="alert-content">
+                      <h4>High Risk Transaction</h4>
+                      <p>Suspicious transaction of $15,000 from AC-4532 to AC-9087</p>
+                      <span class="alert-time">25 minutes ago</span>
+                    </div>
+                    <div class="alert-actions">
+                      <button class="btn btn-sm btn-warning">Review</button>
+                    </div>
+                  </div>
+                  <div class="alert-item medium">
+                    <div class="alert-icon">
+                      <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div class="alert-content">
+                      <h4>Web Trap Triggered</h4>
+                      <p>Account AC-2341 triggered web trap node WN-567</p>
+                      <span class="alert-time">1 hour ago</span>
+                    </div>
+                    <div class="alert-actions">
+                      <button class="btn btn-sm btn-primary">Check</button>
+                    </div>
+                  </div>
+                  <div class="alert-item medium">
+                    <div class="alert-icon">
+                      <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div class="alert-content">
+                      <h4>Division Detection</h4>
+                      <p>Account AC-8765 split into 3 child wallets</p>
+                      <span class="alert-time">3 hours ago</span>
+                    </div>
+                    <div class="alert-actions">
+                      <button class="btn btn-sm btn-primary">Check</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Top Risk Accounts</h3>
+                <button class="btn btn-sm btn-outline-primary">View All</button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Account ID</th>
+                        <th>Risk Score</th>
+                        <th>Infection State</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>AC-7829</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-danger" style="width: 92%">9.2</div>
+                          </div>
+                        </td>
+                        <td><span class="badge bg-danger">Infected</span></td>
+                        <td>New York, USA</td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">Details</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>AC-4532</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-danger" style="width: 87%">8.7</div>
+                          </div>
+                        </td>
+                        <td><span class="badge bg-danger">Infected</span></td>
+                        <td>London, UK</td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">Details</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>AC-9087</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 78%">7.8</div>
+                          </div>
+                        </td>
+                        <td><span class="badge bg-warning">Exposed</span></td>
+                        <td>Toronto, Canada</td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">Details</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>AC-2341</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 74%">7.4</div>
+                          </div>
+                        </td>
+                        <td><span class="badge bg-warning">Exposed</span></td>
+                        <td>Sydney, Australia</td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">Details</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>AC-8765</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 69%">6.9</div>
+                          </div>
+                        </td>
+                        <td><span class="badge bg-warning">Exposed</span></td>
+                        <td>Berlin, Germany</td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">Details</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Metrics -->
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h3>Metabolism Score Trend</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="metabolism-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h3>Mutation Score Distribution</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="mutation-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h3>Synapse Score Analysis</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="synapse-chart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Details Section (Hidden by default) -->
+        <div class="account-details-section" id="account-details" style="display: none;">
+          <div class="account-details-header">
+            <button class="btn btn-sm btn-outline-secondary back-btn">
+              <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </button>
+            <h2>Account Details: <span id="detail-account-id">AC-7829</span></h2>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Account Information</h3>
+                </div>
+                <div class="card-body">
+                  <div class="account-info">
+                    <div class="info-item">
+                      <span class="info-label">Account ID:</span>
+                      <span class="info-value">AC-7829</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Account Address:</span>
+                      <span class="info-value">0x7829a4b5c6d7e8f9g0h1i2j3k4l5m6n7o8p9</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Account Age:</span>
+                      <span class="info-value">237 days</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Location:</span>
+                      <span class="info-value">New York, USA</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Account Type:</span>
+                      <span class="info-value">Business</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Infection State:</span>
+                      <span class="info-value status-infected">Infected</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Risk Score Breakdown</h3>
+                </div>
+                <div class="card-body">
+                  <div class="risk-score-breakdown">
+                    <div class="risk-item">
+                      <span class="risk-label">Metabolism Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 85%">8.5</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Anomaly Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 92%">9.2</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Mold Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-warning" style="width: 76%">7.6</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Toxicity:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 88%">8.8</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Division Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 45%">4.5</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Spider Web Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 83%">8.3</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Synapse Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-warning" style="width: 72%">7.2</div>
+                      </div>
+                    </div>
+                    <div class="risk-item">
+                      <span class="risk-label">Mutation Score:</span>
+                      <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 91%">9.1</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Behavioral Fingerprint</h3>
+                </div>
+                <div class="card-body">
+                  <div class="fingerprint-data">
+                    <div class="fingerprint-item">
+                      <span class="fingerprint-label">Volume Volatility:</span>
+                      <span class="fingerprint-value">0.87</span>
+                    </div>
+                    <div class="fingerprint-item">
+                      <span class="fingerprint-label">Destination Entropy:</span>
+                      <span class="fingerprint-value">0.92</span>
+                    </div>
+                    <div class="fingerprint-item">
+                      <span class="fingerprint-label">Transaction Timing Pattern:</span>
+                      <div class="tag-list">
+                        <span class="tag">Evening Peaks</span>
+                        <span class="tag">Weekend Spikes</span>
+                        <span class="tag">Irregular Intervals</span>
+                      </div>
+                    </div>
+                    <div class="fingerprint-item">
+                      <span class="fingerprint-label">Counterparty Types:</span>
+                      <div class="tag-list">
+                        <span class="tag">Exchanges</span>
+                        <span class="tag">High-Risk Merchants</span>
+                        <span class="tag">Offshore Entities</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Fraud Zones</h3>
+                </div>
+                <div class="card-body">
+                  <div class="fraud-zone-data">
+                    <div class="fraud-zone-item">
+                      <span class="fraud-zone-label">Suspicious Activities:</span>
+                      <div class="tag-list">
+                        <span class="tag danger">Rapid Fund Movement</span>
+                        <span class="tag danger">Unusual Transaction Size</span>
+                        <span class="tag warning">Multiple Currency Conversion</span>
+                        <span class="tag warning">Unusual Geographic Pattern</span>
+                      </div>
+                    </div>
+                    <div class="fraud-zone-item">
+                      <span class="fraud-zone-label">Dead Zone:</span>
+                      <span class="fraud-zone-value status-danger">Yes</span>
+                    </div>
+                    <div class="fraud-zone-item">
+                      <span class="fraud-zone-label">Fraud Pattern Detected:</span>
+                      <span class="fraud-zone-value status-danger">Yes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Transaction History</h3>
+                  <div class="card-actions">
+                    <button class="btn btn-sm btn-outline-secondary">Last 7 Days</button>
+                    <button class="btn btn-sm btn-outline-secondary active">Last 30 Days</button>
+                    <button class="btn btn-sm btn-outline-secondary">Last 90 Days</button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Transaction ID</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Value</th>
+                          <th>Type</th>
+                          <th>Timestamp</th>
+                          <th>Risk Level</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>TX-98765</td>
+                          <td>AC-7829</td>
+                          <td>AC-4532</td>
+                          <td>$12,500</td>
+                          <td>TRANSFER</td>
+                          <td>May 8, 2025 09:45 AM</td>
+                          <td><span class="badge bg-danger">High</span></td>
+                        </tr>
+                        <tr>
+                          <td>TX-98764</td>
+                          <td>AC-7829</td>
+                          <td>AC-9087</td>
+                          <td>$8,750</td>
+                          <td>TRANSFER</td>
+                          <td>May 7, 2025 02:30 PM</td>
+                          <td><span class="badge bg-warning">Medium</span></td>
+                        </tr>
+                        <tr>
+                          <td>TX-98763</td>
+                          <td>AC-2341</td>
+                          <td>AC-7829</td>
+                          <td>$22,000</td>
+                          <td>DEPOSIT</td>
+                          <td>May 5, 2025 11:15 AM</td>
+                          <td><span class="badge bg-danger">High</span></td>
+                        </tr>
+                        <tr>
+                          <td>TX-98762</td>
+                          <td>AC-7829</td>
+                          <td>AC-8765</td>
+                          <td>$5,300</td>
+                          <td>TRANSFER</td>
+                          <td>May 3, 2025 04:20 PM</td>
+                          <td><span class="badge bg-success">Low</span></td>
+                        </tr>
+                        <tr>
+                          <td>TX-98761</td>
+                          <td>AC-7829</td>
+                          <td>AC-3456</td>
+                          <td>$17,800</td>
+                          <td>TRANSFER</td>
+                          <td>May 1, 2025 10:05 AM</td>
+                          <td><span class="badge bg-danger">High</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Mutation Monitor</h3>
+                </div>
+                <div class="card-body">
+                  <div class="mutation-data">
+                    <div class="mutation-comparison">
+                      <div class="mutation-column">
+                        <h4>Previous DNA Snapshot</h4>
+                        <div class="mutation-item">
+                          <span class="mutation-label">Volume Volatility:</span>
+                          <span class="mutation-value">0.45</span>
+                        </div>
+                        <div class="mutation-item">
+                          <span class="mutation-label">Destination Entropy:</span>
+                          <span class="mutation-value">0.38</span>
+                        </div>
+                      </div>
+                      <div class="mutation-column">
+                        <h4>Current DNA Snapshot</h4>
+                        <div class="mutation-item">
+                          <span class="mutation-label">Volume Volatility:</span>
+                          <span class="mutation-value highlight-change">0.87</span>
+                        </div>
+                        <div class="mutation-item">
+                          <span class="mutation-label">Destination Entropy:</span>
+                          <span class="mutation-value highlight-change">0.92</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mutation-summary">
+                      <div class="mutation-item">
+                        <span class="mutation-label">Mutation Flag:</span>
+                        <span class="mutation-value status-danger">Yes</span>
+                      </div>
+                      <div class="mutation-item">
+                        <span class="mutation-label">Mutation Reason:</span>
+                        <span class="mutation-value">Sudden increase in transaction volume and destination diversity</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Division Detection</h3>
+                </div>
+                <div class="card-body">
+                  <div class="division-data">
+                    <div class="division-item">
+                      <span class="division-label">Parent Wallet:</span>
+                      <span class="division-value">AC-7829</span>
+                    </div>
+                    <div class="division-item">
+                      <span class="division-label">Child Wallets:</span>
+                      <div class="tag-list">
+                        <span class="tag">AC-9921</span>
+                        <span class="tag">AC-9922</span>
+                        <span class="tag">AC-9923</span>
+                      </div>
+                    </div>
+                    <div class="division-item">
+                      <span class="division-label">Total Amount Split:</span>
+                      <span class="division-value">$45,000</span>
+                    </div>
+                    <div class="division-item">
+                      <span class="division-label">Division Time:</span>
+                      <span class="division-value">April 28, 2025 03:15 PM</span>
+                    </div>
+                    <div class="division-item">
+                      <span class="division-label">Division Flag:</span>
+                      <span class="division-value status-warning">Yes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Accounts Section -->
+      <div class="dashboard-content" id="accounts" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Account Management</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary export-accounts-btn">
+              <i class="bi bi-download"></i>
+              Export Accounts
+            </button>
+            <button class="btn btn-outline-primary filter-accounts-btn">
+              <i class="bi bi-filter"></i>
+              Filter Accounts
+            </button>
+          </div>
+        </div>
+        
+        <div class="accounts-table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Account ID</th>
+                <th>Account Type</th>
+                <th>Location</th>
+                <th>Risk Score</th>
+                <th>Infection State</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="accounts-table-body">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Risk Analysis Section -->
+      <div class="dashboard-content" id="risk-analysis" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Risk Analysis</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary export-risk-btn">
+              <i class="bi bi-download"></i>
+              Export Risk Report
+            </button>
+            <button class="btn btn-outline-primary filter-risk-btn">
+              <i class="bi bi-filter"></i>
+              Filter Data
+            </button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Risk Score Distribution</h3>
+                <div class="card-actions">
+                  <button class="btn btn-sm active">Daily</button>
+                  <button class="btn btn-sm">Weekly</button>
+                  <button class="btn btn-sm">Monthly</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="risk-distribution-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Risk Factors</h3>
+              </div>
+              <div class="card-body">
+                <div class="risk-factors">
+                  <div class="risk-factor">
+                    <div class="risk-factor-name">Unusual Transaction Patterns</div>
+                    <div class="risk-factor-bar">
+                      <div class="risk-factor-progress" style="width: 85%;"></div>
+                    </div>
+                    <div class="risk-factor-value">85%</div>
+                  </div>
+                  <div class="risk-factor">
+                    <div class="risk-factor-name">Geographic Anomalies</div>
+                    <div class="risk-factor-bar">
+                      <div class="risk-factor-progress" style="width: 72%;"></div>
+                    </div>
+                    <div class="risk-factor-value">72%</div>
+                  </div>
+                  <div class="risk-factor">
+                    <div class="risk-factor-name">Velocity of Money</div>
+                    <div class="risk-factor-bar">
+                      <div class="risk-factor-progress" style="width: 68%;"></div>
+                    </div>
+                    <div class="risk-factor-value">68%</div>
+                  </div>
+                  <div class="risk-factor">
+                    <div class="risk-factor-name">Network Connections</div>
+                    <div class="risk-factor-bar">
+                      <div class="risk-factor-progress" style="width: 63%;"></div>
+                    </div>
+                    <div class="risk-factor-value">63%</div>
+                  </div>
+                  <div class="risk-factor">
+                    <div class="risk-factor-name">Account Age</div>
+                    <div class="risk-factor-bar">
+                      <div class="risk-factor-progress" style="width: 45%;"></div>
+                    </div>
+                    <div class="risk-factor-value">45%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Transactions Section -->
+      <div class="dashboard-content" id="transactions" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Transaction Monitoring</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary export-transactions-btn">
+              <i class="bi bi-download"></i>
+              Export Transactions
+            </button>
+            <button class="btn btn-outline-primary filter-transactions-btn">
+              <i class="bi bi-filter"></i>
+              Filter Transactions
+            </button>
+          </div>
+        </div>
+        
+        <div class="transactions-table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Risk Level</th>
+              </tr>
+            </thead>
+            <tbody id="transactions-table-body">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Fraud Zones Section -->
+      <div class="dashboard-content" id="fraud-zones" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Fraud Zones</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary export-zones-btn">
+              <i class="bi bi-download"></i>
+              Export Zones Report
+            </button>
+            <button class="btn btn-outline-primary filter-zones-btn">
+              <i class="bi bi-filter"></i>
+              Filter Zones
+            </button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <h3>Fraud Zone Map</h3>
+              </div>
+              <div class="card-body">
+                <div class="fraud-zone-map">
+                  <div class="fraud-zone-legend">
+                    <div class="legend-item">
+                      <span class="legend-color high-risk"></span>
+                      <span class="legend-label">High Risk Zone</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color medium-risk"></span>
+                      <span class="legend-label">Medium Risk Zone</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color low-risk"></span>
+                      <span class="legend-label">Low Risk Zone</span>
+                    </div>
+                  </div>
+                  <div class="fraud-zone-visual">
+                    <!-- Placeholder for fraud zone visualization -->
+                    <div class="zone-placeholder">Fraud Zone Visualization</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Top Fraud Zones</h3>
+              </div>
+              <div class="card-body">
+                <div class="fraud-zone-list">
+                  <div class="fraud-zone-item">
+                    <div class="zone-name">Rapid Fund Movement</div>
+                    <div class="zone-stats">
+                      <span class="zone-accounts">24 accounts</span>
+                      <span class="zone-severity high">High</span>
+                    </div>
+                  </div>
+                  <div class="fraud-zone-item">
+                    <div class="zone-name">Unusual Transaction Size</div>
+                    <div class="zone-stats">
+                      <span class="zone-accounts">18 accounts</span>
+                      <span class="zone-severity high">High</span>
+                    </div>
+                  </div>
+                  <div class="fraud-zone-item">
+                    <div class="zone-name">Multiple Currency Conversion</div>
+                    <div class="zone-stats">
+                      <span class="zone-accounts">15 accounts</span>
+                      <span class="zone-severity medium">Medium</span>
+                    </div>
+                  </div>
+                  <div class="fraud-zone-item">
+                    <div class="zone-name">Unusual Geographic Pattern</div>
+                    <div class="zone-stats">
+                      <span class="zone-accounts">12 accounts</span>
+                      <span class="zone-severity medium">Medium</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Zone Detection History</h3>
+              </div>
+              <div class="card-body">
+                <div class="zone-history">
+                  <div class="zone-history-item">
+                    <div class="zone-history-date">May 8, 2025</div>
+                    <div class="zone-history-content">
+                      <div class="zone-history-title">New Fraud Zone Detected</div>
+                      <div class="zone-history-desc">Rapid Fund Movement pattern detected across 8 new accounts</div>
+                    </div>
+                  </div>
+                  <div class="zone-history-item">
+                    <div class="zone-history-date">May 5, 2025</div>
+                    <div class="zone-history-content">
+                      <div class="zone-history-title">Zone Expansion</div>
+                      <div class="zone-history-desc">Unusual Transaction Size zone expanded to include 5 more accounts</div>
+                    </div>
+                  </div>
+                  <div class="zone-history-item">
+                    <div class="zone-history-date">May 1, 2025</div>
+                    <div class="zone-history-content">
+                      <div class="zone-history-title">Zone Mitigation</div>
+                      <div class="zone-history-desc">Multiple Currency Conversion zone reduced by 30% after implementing new controls</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mutation Monitor Section -->
+      <div class="dashboard-content" id="mutation-monitor" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Mutation Monitor</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary export-mutation-btn">
+              <i class="bi bi-download"></i>
+              Export Mutation Data
+            </button>
+            <button class="btn btn-outline-primary filter-mutation-btn">
+              <i class="bi bi-filter"></i>
+              Filter Data
+            </button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Mutation Trends</h3>
+                <div class="card-actions">
+                  <button class="btn btn-sm active">Daily</button>
+                  <button class="btn btn-sm">Weekly</button>
+                  <button class="btn btn-sm">Monthly</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="mutation-trends-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Mutation Alerts</h3>
+              </div>
+              <div class="card-body">
+                <div class="mutation-alerts">
+                  <div class="mutation-alert high">
+                    <div class="mutation-alert-icon">
+                      <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+                    <div class="mutation-alert-content">
+                      <h4>Critical Mutation Detected</h4>
+                      <p>Account AC-7829 has shown a 93% increase in transaction volume and destination diversity</p>
+                      <div class="mutation-alert-time">5 hours ago</div>
+                    </div>
+                    <div class="mutation-alert-actions">
+                      <button class="btn btn-sm btn-danger">Flag</button>
+                      <button class="btn btn-sm btn-outline-secondary">Details</button>
+                    </div>
+                  </div>
+                  
+                  <div class="mutation-alert medium">
+                    <div class="mutation-alert-icon">
+                      <i class="bi bi-exclamation-circle-fill"></i>
+                    </div>
+                    <div class="mutation-alert-content">
+                      <h4>Behavior Pattern Change</h4>
+                      <p>Account AC-4532 has shifted transaction timing from primarily business hours to late night</p>
+                      <div class="mutation-alert-time">1 day ago</div>
+                    </div>
+                    <div class="mutation-alert-actions">
+                      <button class="btn btn-sm btn-warning">Monitor</button>
+                      <button class="btn btn-sm btn-outline-secondary">Details</button>
+                    </div>
+                  </div>
+                  
+                  <div class="mutation-alert low">
+                    <div class="mutation-alert-icon">
+                      <i class="bi bi-info-circle-fill"></i>
+                    </div>
+                    <div class="mutation-alert-content">
+                      <h4>Minor Behavior Change</h4>
+                      <p>Account AC-2341 has increased international transaction frequency by 15%</p>
+                      <div class="mutation-alert-time">3 days ago</div>
+                    </div>
+                    <div class="mutation-alert-actions">
+                      <button class="btn btn-sm btn-primary">Review</button>
+                      <button class="btn btn-sm btn-outline-secondary">Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Settings Section -->
+      <div class="dashboard-content" id="settings" style="display: none;">
+        <div class="dashboard-header">
+          <h1>Dashboard Settings</h1>
+          <div class="dashboard-actions">
+            <button class="btn btn-primary save-settings-btn">
+              <i class="bi bi-save"></i>
+              Save Settings
+            </button>
+            <button class="btn btn-outline-secondary reset-settings-btn">
+              <i class="bi bi-arrow-counterclockwise"></i>
+              Reset to Default
+            </button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>General Settings</h3>
+              </div>
+              <div class="card-body">
+                <form class="settings-form">
+                  <div class="form-group">
+                    <label>Dashboard Theme</label>
+                    <select class="form-control" id="theme-select">
+                      <option value="light">Light Theme</option>
+                      <option value="dark">Dark Theme</option>
+                      <option value="auto">Auto (System Preference)</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Data Refresh Interval</label>
+                    <select class="form-control" id="refresh-interval">
+                      <option value="30">30 seconds</option>
+                      <option value="60">1 minute</option>
+                      <option value="300">5 minutes</option>
+                      <option value="600">10 minutes</option>
+                      <option value="1800">30 minutes</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Default Time Range</label>
+                    <select class="form-control" id="default-time-range">
+                      <option value="day">Last 24 Hours</option>
+                      <option value="week">Last 7 Days</option>
+                      <option value="month">Last 30 Days</option>
+                      <option value="quarter">Last 90 Days</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="enable-notifications" checked>
+                    <label class="form-check-label" for="enable-notifications">Enable Notifications</label>
+                  </div>
+                  
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="enable-sound-alerts">
+                    <label class="form-check-label" for="enable-sound-alerts">Enable Sound Alerts</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h3>Alert Settings</h3>
+              </div>
+              <div class="card-body">
+                <form class="alert-settings-form">
+                  <div class="form-group">
+                    <label>Risk Score Threshold for High Risk</label>
+                    <input type="range" class="form-range" min="5" max="10" step="0.1" value="8.0" id="high-risk-threshold">
+                    <div class="range-value">8.0</div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Risk Score Threshold for Medium Risk</label>
+                    <input type="range" class="form-range" min="3" max="8" step="0.1" value="6.0" id="medium-risk-threshold">
+                    <div class="range-value">6.0</div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Alert Priority</label>
+                    <div class="priority-settings">
+                      <div class="priority-item">
+                        <span class="priority-handle">≡</span>
+                        <span class="priority-name">Unusual Transaction Patterns</span>
+                        <select class="priority-level">
+                          <option value="high">High</option>
+                          <option value="medium">Medium</option>
+                          <option value="low">Low</option>
+                        </select>
+                      </div>
+                      
+                      <div class="priority-item">
+                        <span class="priority-handle">≡</span>
+                        <span class="priority-name">Geographic Anomalies</span>
+                        <select class="priority-level">
+                          <option value="high">High</option>
+                          <option value="medium" selected>Medium</option>
+                          <option value="low">Low</option>
+                        </select>
+                      </div>
+                      
+                      <div class="priority-item">
+                        <span class="priority-handle">≡</span>
+                        <span class="priority-name">Velocity of Money</span>
+                        <select class="priority-level">
+                          <option value="high">High</option>
+                          <option value="medium" selected>Medium</option>
+                          <option value="low">Low</option>
+                        </select>
+                      </div>
+                      
+                      <div class="priority-item">
+                        <span class="priority-handle">≡</span>
+                        <span class="priority-name">Network Connections</span>
+                        <select class="priority-level">
+                          <option value="high">High</option>
+                          <option value="medium">Medium</option>
+                          <option value="low" selected>Low</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="fraud-admin-dashboard.js"></script>
+</body>
+</html>

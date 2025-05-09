@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Cortex - Bio-Inspired Blockchain Fraud Detection</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/model-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>BioChainGuard</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#overview">Overview</a></li>
+                <li><a href="../index.html#problem">Problem</a></li>
+                <li><a href="../index.html#models">Models</a></li>
+                <li><a href="../index.html#visualizer">Visualizer</a></li>
+                <li><a href="../index.html#tech">Tech Stack</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="model-hero">
+        <div class="container">
+            <div class="model-hero-content">
+                <div class="model-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>Neural Cortex</h1>
+                <p>Hebbian-Inspired Learning for Blockchain Fraud Detection</p>
+                <a href="infection-simulation.html" class="model-button">SIMULATION</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Overview Section -->
+    <section class="model-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Model Overview</h2>
+            </div>
+            <div class="model-overview-content">
+                <p>The Neural Cortex is an unsupervised learning model inspired by Hebbian learning principles in neuroscience, often summarized as "neurons that fire together, wire together." This model tracks each account's transaction behavior on the blockchain, adapting over time to detect anomalies by learning normal patterns.</p>
+                <p>Unlike traditional rule-based systems, the Neural Cortex builds a dynamic understanding of what constitutes "normal" behavior for each account, allowing it to identify subtle deviations that might indicate fraudulent activity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+            </div>
+            <div class="how-it-works-content">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Feature Extraction</h3>
+                        <p>For each account, the Neural Cortex extracts key features from transactions, including:</p>
+                        <ul>
+                            <li>Transaction frequency patterns</li>
+                            <li>Transaction amount distributions</li>
+                            <li>Destination entropy (variety of transaction recipients)</li>
+                            <li>Time-of-day patterns</li>
+                            <li>Transaction type distributions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Pattern Learning</h3>
+                        <p>Using Hebbian-inspired learning, the model builds a "connection matrix" for each account that represents the strength of correlations between different transaction features. For example:</p>
+                        <ul>
+                            <li>If an account typically makes small transactions to many recipients, this pattern is reinforced</li>
+                            <li>If large transactions usually occur during business hours, this correlation is strengthened</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Anomaly Detection</h3>
+                        <p>When new transactions occur, the model compares them against the learned patterns:</p>
+                        <ul>
+                            <li>Transactions that follow established patterns receive low anomaly scores</li>
+                            <li>Transactions that exhibit unusual combinations of features receive high anomaly scores</li>
+                            <li>The model adapts its thresholds based on the overall network activity</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Continuous Learning</h3>
+                        <p>The Neural Cortex continuously updates its understanding of normal patterns:</p>
+                        <ul>
+                            <li>Gradual changes in behavior are incorporated into the model</li>
+                            <li>Sudden changes trigger higher anomaly scores</li>
+                            <li>False positives are used to refine the model's sensitivity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="key-features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Features</h2>
+            </div>
+            <div class="key-features-content">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h3>Behavioral Fingerprinting</h3>
+                    <p>Creates a unique behavioral fingerprint for each account based on its transaction history, allowing for personalized anomaly detection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Adaptive Learning</h3>
+                    <p>Continuously updates its understanding of normal patterns as account behavior evolves over time, reducing false positives.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Anomaly Scoring</h3>
+                    <p>Provides a continuous anomaly score for each transaction, allowing for risk-based decision making rather than binary classification.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Explainable Results</h3>
+                    <p>Identifies which specific combinations of features triggered the anomaly detection, making results interpretable for analysts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization Section -->
+    <section class="visualization">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visualization</h2>
+            </div>
+            <div class="visualization-content">
+                <div class="visualization-description">
+                    <p>The Neural Cortex model outputs are visualized as interactive heatmaps that show the strength of correlations between different transaction features for each account.</p>
+                    <p>Areas of high correlation (shown in brighter colors) represent established patterns, while anomalous transactions appear as outliers in the visualization.</p>
+                </div>
+                <div class="visualization-image">
+                    <img src="../images/neural-cortex-heatmap.jpg" alt="Neural Cortex Heatmap Visualization">
+                </div>
+                <div class="visualization-details">
+                    <h3>Interpreting the Visualization</h3>
+                    <ul>
+                        <li><strong>Bright Clusters:</strong> Established transaction patterns</li>
+                        <li><strong>Isolated Bright Points:</strong> Potential anomalies</li>
+                        <li><strong>Gradient Changes:</strong> Evolving behavior patterns</li>
+                        <li><strong>Dark Areas:</strong> Feature combinations rarely observed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation Section -->
+    <section class="technical-implementation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Implementation</h2>
+            </div>
+            <div class="technical-content">
+                <div class="code-block">
+                    <pre><code>
+# Simplified Python implementation of Neural Cortex model
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+class NeuralCortex:
+    def __init__(self, feature_dim=5, learning_rate=0.01, decay_rate=0.99):
+        self.feature_dim = feature_dim
+        self.learning_rate = learning_rate
+        self.decay_rate = decay_rate
+        self.connection_matrix = np.zeros((feature_dim, feature_dim))
+        self.scaler = StandardScaler()
+        self.transaction_history = []
+        
+    def extract_features(self, transaction):
+        """Extract features from a blockchain transaction"""
+        # Features: amount, time_of_day, recipient_entropy, frequency, type
+        features = [
+            transaction['amount'],
+            transaction['timestamp'] % 86400,  # Time of day in seconds
+            self._calculate_entropy(transaction['recipient']),
+            self._calculate_frequency(transaction['timestamp']),
+            self._encode_transaction_type(transaction['type'])
+        ]
+        return np.array(features).reshape(1, -1)
+        
+    def update_model(self, transaction):
+        """Update the connection matrix based on new transaction"""
+        features = self.extract_features(transaction)
+        self.transaction_history.append(features)
+        
+        # Normalize features
+        if len(self.transaction_history) > 1:
+            all_features = np.vstack(self.transaction_history)
+            self.scaler.fit(all_features)
+            
+        normalized_features = self.scaler.transform(features).flatten()
+        
+        # Hebbian update: strengthen connections between co-occurring features
+        for i in range(self.feature_dim):
+            for j in range(self.feature_dim):
+                if i != j:
+                    # Neurons that fire together, wire together
+                    delta = normalized_features[i] * normalized_features[j]
+                    self.connection_matrix[i, j] += self.learning_rate * delta
+                    
+                    # Apply decay to all connections (forgetting)
+                    self.connection_matrix[i, j] *= self.decay_rate
+        
+    def calculate_anomaly_score(self, transaction):
+        """Calculate anomaly score for a transaction"""
+        features = self.extract_features(transaction)
+        normalized_features = self.scaler.transform(features).flatten()
+        
+        # Calculate expected co-activations based on connection matrix
+        expected_coactivations = np.zeros(self.feature_dim)
+        for i in range(self.feature_dim):
+            for j in range(self.feature_dim):
+                expected_coactivations[i] += self.connection_matrix[i, j] * normalized_features[j]
+        
+        # Anomaly score is the difference between actual and expected feature values
+        anomaly_scores = np.abs(normalized_features - expected_coactivations)
+        return np.mean(anomaly_scores)
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2>Use Cases</h2>
+            </div>
+            <div class="use-cases-content">
+                <div class="use-case">
+                    <h3>Account Takeover Detection</h3>
+                    <p>The Neural Cortex can identify when an account's transaction patterns suddenly change, which may indicate that the account has been compromised and taken over by a malicious actor.</p>
+                </div>
+                <div class="use-case">
+                    <h3>Money Laundering Detection</h3>
+                    <p>By identifying unusual combinations of transaction amounts, frequencies, and destinations, the model can flag potential money laundering activities that attempt to disguise the origin of funds.</p>
+                </div>
+                <div class="use-case">
+                    <h3>Market Manipulation Detection</h3>
+                    <p>The model can identify coordinated transaction patterns across multiple accounts that may indicate market manipulation attempts in blockchain-based financial systems.</p>
+                </div>
+                <div class="use-case">
+                    <h3>Adaptive Risk Scoring</h3>
+                    <p>The continuous anomaly scores can be used to implement adaptive risk management policies that apply different levels of scrutiny based on the detected risk level.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Main Button -->
+    <div class="back-to-main">
+        <div class="container">
+            <a href="../index.html" class="btn-primary">
+                <i class="fas fa-arrow-left"></i> Back to Main Page
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BioChainGuard</h2>
+                    <p>Bio-Inspired Blockchain Fraud Detection Suite</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html#overview">Overview</a></li>
+                        <li><a href="../index.html#problem">Problem</a></li>
+                        <li><a href="../index.html#models">Models</a></li>
+                        <li><a href="../index.html#visualizer">Visualizer</a></li>
+                        <li><a href="../index.html#tech">Tech Stack</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact us.</p>
+                    <a href="mailto:info@biochainfraud.com" class="btn-secondary">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bio-Inspired Blockchain Fraud Detection Suite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

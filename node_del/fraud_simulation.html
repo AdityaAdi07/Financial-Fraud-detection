@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Fraud Simulation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.19.0/cytoscape.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fraud_styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔍 Advanced Fraud Detection Simulation</h1>
+      <p class="subtitle">Interactive visualization of fraudulent transaction patterns and network analysis</p>
+    </header>
+
+    <div class="controls-panel">
+      <div class="control-group">
+        <h3>Simulation Controls</h3>
+        <div class="control-buttons">
+          <button id="resetSimulation" class="btn secondary">🔄 Reset Simulation</button>
+          <button id="deleteFraudulentNodesButton" class="btn danger">🚫 Delete Fraudulent Nodes</button>
+          <button id="toggleInfectedButton" class="btn warning">👁️ Toggle Infected Visibility</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <h3>Simulation Stats</h3>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-label">Total Accounts:</span>
+            <span class="stat-value" id="totalAccounts">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Infected Accounts:</span>
+            <span class="stat-value" id="infectedAccounts">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Flagged Transactions:</span>
+            <span class="stat-value" id="flaggedTransactions">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="visualization-container">
+        <div id="cy"></div>
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-color healthy"></span>
+            <span class="legend-label">Healthy Account</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color infected"></span>
+            <span class="legend-label">Infected Account</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color normal-tx"></span>
+            <span class="legend-label">Normal Transaction</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color fraud-tx"></span>
+            <span class="legend-label">Flagged Transaction</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-panel">
+        <div class="alerts">
+          <h3>Fraud Alerts</h3>
+          <div id="alertsContainer"></div>
+        </div>
+        <div class="details">
+          <h3>Selected Node Details</h3>
+          <div id="nodeDetails">
+            <p class="placeholder">Click on a node to view details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details-panel" id="detailsPanel">
+      <div class="details-header">
+        <h3>Transaction Details</h3>
+        <button class="close-btn" id="closeDetails">×</button>
+      </div>
+      <div class="details-content" id="detailsContent">
+        <!-- Transaction details will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="fraud_simulation.js"></script>
+</body>
+</html>

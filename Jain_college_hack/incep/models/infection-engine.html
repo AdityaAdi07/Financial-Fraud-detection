@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infection Engine - Bio-Inspired Blockchain Fraud Detection</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/model-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>BioChainGuard</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#overview">Overview</a></li>
+                <li><a href="../index.html#problem">Problem</a></li>
+                <li><a href="../index.html#models">Models</a></li>
+                <li><a href="../index.html#visualizer">Visualizer</a></li>
+                <li><a href="../index.html#tech">Tech Stack</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="model-hero infection-hero">
+        <div class="container">
+            <div class="model-hero-content">
+                <div class="model-icon">
+                    <i class="fas fa-virus"></i>
+                </div>
+                <h1>Infection Engine</h1>
+                <p>SIR Model for Blockchain Fraud Risk Propagation</p>
+                <a href="infection-simulation.html" class="model-button">Simulation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Overview Section -->
+    <section class="model-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Model Overview</h2>
+            </div>
+            <div class="model-overview-content">
+                <p>The Infection Engine is a fraud detection model inspired by epidemiological SIR (Susceptible, Infected, Recovered) models used to track disease spread. It simulates the propagation of fraud risk across blockchain accounts by mapping transactions in a graph structure and modeling how "infection" spreads from one account to another.</p>
+                <p>This approach recognizes that fraud often exhibits contagion-like properties, where compromised accounts tend to interact with and potentially compromise other accounts. By modeling this spread, the system can identify not only currently infected accounts but also predict which accounts are at high risk of becoming compromised in the near future.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+            </div>
+            <div class="how-it-works-content">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Account Classification</h3>
+                        <p>The Infection Engine classifies blockchain accounts into four states:</p>
+                        <ul>
+                            <li><strong>Susceptible (S):</strong> Normal accounts that could potentially become infected</li>
+                            <li><strong>Exposed (E):</strong> Accounts that have interacted with infected accounts but don't yet show signs of fraud</li>
+                            <li><strong>Infected (I):</strong> Accounts exhibiting fraudulent behavior</li>
+                            <li><strong>Recovered (R):</strong> Previously infected accounts that have been secured or quarantined</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Transaction Graph Mapping</h3>
+                        <p>The model builds a dynamic transaction graph where:</p>
+                        <ul>
+                            <li>Nodes represent blockchain accounts</li>
+                            <li>Edges represent transactions between accounts</li>
+                            <li>Edge weights reflect transaction frequency and volume</li>
+                            <li>Node states represent infection status (S, E, I, or R)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Infection Propagation</h3>
+                        <p>The model simulates how fraud risk propagates through the network:</p>
+                        <ul>
+                            <li><strong>Infection Rate (β):</strong> Probability that a susceptible account becomes exposed after interacting with an infected account</li>
+                            <li><strong>Incubation Rate (σ):</strong> Rate at which exposed accounts become infected</li>
+                            <li><strong>Recovery Rate (γ):</strong> Rate at which infected accounts become recovered</li>
+                            <li><strong>Immunity Loss (ω):</strong> Rate at which recovered accounts become susceptible again</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Risk Assessment</h3>
+                        <p>The model provides several risk metrics:</p>
+                        <ul>
+                            <li><strong>Current Infection Status:</strong> The current state of each account</li>
+                            <li><strong>Infection Probability:</strong> Likelihood of an account becoming infected in the near future</li>
+                            <li><strong>Contagion Index:</strong> Measure of how likely an account is to spread infection if compromised</li>
+                            <li><strong>Network Risk Level:</strong> Overall fraud risk level of the blockchain network</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="key-features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Features</h2>
+            </div>
+            <div class="key-features-content">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Network Propagation</h3>
+                    <p>Models how fraud risk spreads through transaction networks, identifying high-risk pathways and potential future victims.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Preventive Detection</h3>
+                    <p>Identifies accounts at high risk of infection before they exhibit fraudulent behavior, enabling proactive protection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Fraud Clusters</h3>
+                    <p>Identifies interconnected clusters of fraudulent accounts, revealing organized fraud operations that might otherwise appear as isolated incidents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Temporal Dynamics</h3>
+                    <p>Tracks how fraud patterns evolve over time, adapting to new attack vectors and changing fraud strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization Section -->
+    <section class="visualization">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visualization</h2>
+            </div>
+            <div class="visualization-content">
+                <div class="visualization-description">
+                    <p>The Infection Engine outputs are visualized as an interactive network graph showing the spread of fraud across the blockchain ecosystem.</p>
+                    <p>The visualization uses color-coding to represent different infection states and animated transitions to show how infection propagates through the network in real-time.</p>
+                </div>
+                <div class="visualization-image">
+                    <img src="../images/infection-network.jpg" alt="Infection Engine Network Visualization">
+                </div>
+                <div class="visualization-details">
+                    <h3>Interpreting the Visualization</h3>
+                    <ul>
+                        <li><strong>Green Nodes:</strong> Susceptible accounts (healthy)</li>
+                        <li><strong>Yellow Nodes:</strong> Exposed accounts (at risk)</li>
+                        <li><strong>Red Nodes:</strong> Infected accounts (fraudulent)</li>
+                        <li><strong>Blue Nodes:</strong> Recovered accounts (previously infected)</li>
+                        <li><strong>Red Edges:</strong> High-risk transaction pathways</li>
+                        <li><strong>Pulsing Animation:</strong> Active infection spread</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation Section -->
+    <section class="technical-implementation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Implementation</h2>
+            </div>
+            <div class="technical-content">
+                <div class="code-block">
+                    <pre><code>
+# Simplified Python implementation of Infection Engine
+import networkx as nx
+import numpy as np
+from enum import Enum
+
+class InfectionState(Enum):
+    SUSCEPTIBLE = 0
+    EXPOSED = 1
+    INFECTED = 2
+    RECOVERED = 3
+
+class InfectionEngine:
+    def __init__(self, infection_rate=0.3, incubation_rate=0.2, 
+                 recovery_rate=0.1, immunity_loss=0.05):
+        # Initialize parameters
+        self.infection_rate = infection_rate  # β: S → E
+        self.incubation_rate = incubation_rate  # σ: E → I
+        self.recovery_rate = recovery_rate  # γ: I → R
+        self.immunity_loss = immunity_loss  # ω: R → S
+        
+        # Initialize transaction graph
+        self.graph = nx.DiGraph()
+        
+        # Track account states
+        self.account_states = {}
+        self.exposure_time = {}
+        
+    def add_account(self, account_id, initial_state=InfectionState.SUSCEPTIBLE):
+        """Add a new account to the network"""
+        if account_id not in self.graph:
+            self.graph.add_node(account_id)
+            self.account_states[account_id] = initial_state
+            if initial_state == InfectionState.EXPOSED:
+                self.exposure_time[account_id] = 0
+    
+    def process_transaction(self, transaction):
+        """Process a new blockchain transaction"""
+        sender = transaction['sender']
+        recipient = transaction['recipient']
+        amount = transaction['amount']
+        timestamp = transaction['timestamp']
+        
+        # Add accounts if they don't exist
+        for account in [sender, recipient]:
+            if account not in self.graph:
+                self.add_account(account)
+        
+        # Update or add edge
+        if self.graph.has_edge(sender, recipient):
+            # Update existing edge
+            self.graph[sender][recipient]['weight'] += amount
+            self.graph[sender][recipient]['transactions'] += 1
+            self.graph[sender][recipient]['last_timestamp'] = timestamp
+        else:
+            # Add new edge
+            self.graph.add_edge(sender, recipient, weight=amount, 
+                               transactions=1, last_timestamp=timestamp)
+        
+        # Model infection spread
+        self._model_infection_spread(sender, recipient, amount)
+        
+        # Update infection states
+        self._update_infection_states()
+        
+        return {
+            'sender_state': self.account_states[sender].name,
+            'recipient_state': self.account_states[recipient].name,
+            'network_risk': self._calculate_network_risk()
+        }
+    
+    def _model_infection_spread(self, sender, recipient, amount):
+        """Model how infection spreads through transactions"""
+        # If sender is infected, recipient might become exposed
+        if self.account_states[sender] == InfectionState.INFECTED:
+            if self.account_states[recipient] == InfectionState.SUSCEPTIBLE:
+                # Probability of exposure increases with transaction amount
+                exposure_prob = self.infection_rate * (1 - np.exp(-amount / 1000))
+                if np.random.random() < exposure_prob:
+                    self.account_states[recipient] = InfectionState.EXPOSED
+                    self.exposure_time[recipient] = 0
+        
+        # If recipient is infected, sender might become exposed
+        if self.account_states[recipient] == InfectionState.INFECTED:
+            if self.account_states[sender] == InfectionState.SUSCEPTIBLE:
+                exposure_prob = self.infection_rate * 0.5  # Lower probability in reverse direction
+                if np.random.random() < exposure_prob:
+                    self.account_states[sender] = InfectionState.EXPOSED
+                    self.exposure_time[sender] = 0
+    
+    def _update_infection_states(self):
+        """Update infection states based on SEIR model dynamics"""
+        state_changes = {}
+        
+        for account, state in self.account_states.items():
+            if state == InfectionState.EXPOSED:
+                # Increment exposure time
+                self.exposure_time[account] += 1
+                
+                # Check if exposed account becomes infected
+                if np.random.random() < self.incubation_rate * self.exposure_time[account]:
+                    state_changes[account] = InfectionState.INFECTED
+            
+            elif state == InfectionState.INFECTED:
+                # Check if infected account recovers
+                if np.random.random() < self.recovery_rate:
+                    state_changes[account] = InfectionState.RECOVERED
+            
+            elif state == InfectionState.RECOVERED:
+                # Check if recovered account becomes susceptible again
+                if np.random.random() < self.immunity_loss:
+                    state_changes[account] = InfectionState.SUSCEPTIBLE
+        
+        # Apply state changes
+        for account, new_state in state_changes.items():
+            self.account_states[account] = new_state
+            
+            # Reset exposure time if no longer exposed
+            if new_state != InfectionState.EXPOSED and account in self.exposure_time:
+                del self.exposure_time[account]
+    
+    def _calculate_network_risk(self):
+        """Calculate overall network risk level"""
+        total_accounts = len(self.account_states)
+        if total_accounts == 0:
+            return 0.0
+            
+        # Count accounts in each state
+        state_counts = {state: 0 for state in InfectionState}
+        for state in self.account_states.values():
+            state_counts[state] += 1
+        
+        # Calculate risk metrics
+        infection_rate = state_counts[InfectionState.INFECTED] / total_accounts
+        exposure_rate = state_counts[InfectionState.EXPOSED] / total_accounts
+        
+        # Calculate network connectivity (average degree)
+        avg_degree = sum(d for _, d in self.graph.degree()) / total_accounts if total_accounts > 0 else 0
+        
+        # Normalized connectivity factor (0-1)
+        connectivity_factor = min(1.0, avg_degree / 10)
+        
+        # Combined risk score
+        network_risk = (0.6 * infection_rate + 0.3 * exposure_rate + 0.1 * connectivity_factor)
+        
+        return network_risk
+    
+    def get_infection_probabilities(self):
+        """Calculate infection probability for each account"""
+        infection_probs = {}
+        
+        for account in self.graph.nodes():
+            if self.account_states[account] == InfectionState.INFECTED:
+                infection_probs[account] = 1.0
+            elif self.account_states[account] == InfectionState.RECOVERED:
+                infection_probs[account] = 0.2
+            elif self.account_states[account] == InfectionState.EXPOSED:
+                # Higher probability the longer it's been exposed
+                exposure_factor = min(1.0, self.exposure_time[account] * 0.1)
+                infection_probs[account] = 0.3 + 0.5 * exposure_factor
+            else:  # SUSCEPTIBLE
+                # Calculate based on connections to infected nodes
+                neighbors = list(self.graph.predecessors(account))
+                infected_neighbors = sum(1 for n in neighbors if self.account_states.get(n) == InfectionState.INFECTED)
+                
+                if neighbors:
+                    infection_probs[account] = 0.1 * (infected_neighbors / len(neighbors))
+                else:
+                    infection_probs[account] = 0.01
+        
+        return infection_probs
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2>Use Cases</h2>
+            </div>
+            <div class="use-cases-content">
+                <div class="use-case">
+                    <h3>Fraud Ring Detection</h3>
+                    <p>The Infection Engine can identify interconnected networks of fraudulent accounts that operate together, revealing organized fraud rings that might appear as isolated incidents in traditional detection systems.</p>
+                </div>
+                <div class="use-case">
+                    <h3>Early Warning System</h3>
+                    <p>By identifying accounts in the "exposed" state, the system provides early warnings about accounts that are likely to exhibit fraudulent behavior in the near future, enabling proactive intervention.</p>
+                </div>
+                <div class="use-case">
+                    <h3>Containment Strategy</h3>
+                    <p>The model can simulate different containment strategies to determine the most effective approach for limiting the spread of fraud across the network, similar to disease containment in epidemiology.</p>
+                </div>
+                <div class="use-case">
+                    <h3>Risk-Based Authentication</h3>
+                    <p>The infection probability scores can be used to implement risk-based authentication, where accounts with higher infection risk require additional verification steps for high-value transactions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Main Button -->
+    <div class="back-to-main">
+        <div class="container">
+            <a href="../index.html" class="btn-primary">
+                <i class="fas fa-arrow-left"></i> Back to Main Page
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BioChainGuard</h2>
+                    <p>Bio-Inspired Blockchain Fraud Detection Suite</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html#overview">Overview</a></li>
+                        <li><a href="../index.html#problem">Problem</a></li>
+                        <li><a href="../index.html#models">Models</a></li>
+                        <li><a href="../index.html#visualizer">Visualizer</a></li>
+                        <li><a href="../index.html#tech">Tech Stack</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact us.</p>
+                    <a href="mailto:info@biochainfraud.com" class="btn-secondary">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bio-Inspired Blockchain Fraud Detection Suite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
