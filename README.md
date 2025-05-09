@@ -1,6 +1,8 @@
 # 🛡️ Bio-Inspired Blockchain Fraud Detection Suite
 
 Working Website Link: https://finacialogy-rvce.netlify.app/
+
+---
 ![image](https://github.com/user-attachments/assets/05c0e5ee-7cec-46f7-9b59-b6c79de83f5b)
 
 
